@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#calculator {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-basis: auto;
+    width: 500px;
+    border-style: solid;
+    border-color: blueviolet;
+    border-radius: 3px;
+}
+
+#screen-row {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+}
+
+#input-box {
+    height: 100px;
+    text-align: right;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 40px;
+    caret-color: transparent;
+    width: 0;
+    flex-grow: 3.4;
+}
+
+#clear-button {
+    flex-grow: 1;
+}
+
+#button-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-row {
+    height:100px;
+}
+
+#column-1 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+#column-2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#button-container {
+    /*border-style: solid;
+    border-radius: 3px;
+    border-color: lightblue;*/
+}
+
+#operation-row {
+    display: flex;
+}
+
+.digit-row {
+    display: flex;
+}
+
+button {
+    text-align: center;
+    flex: 1 1;
+    background-color: peachpuff;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: brown;
+    font-family: monospace;
+    font-size: 20pt;
+    font-weight: bold;
+    color: brown;
+}
+
+button:hover {
+    background-color: burlywood;
+}
+
+button:active {
+    background-color: orange;
+}
+
+#equals-button {
+    flex-grow: 3.1;
+}
+
+#decimal-button {
+    flex-grow: 1;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="calculator">
+            <div id="screen-row">
+                <input type="text" id="input-box">
+                <button id="clear-button">Clear</button>
+            </div>
+            <div id="button-container">
+                <div id="operation-row" class="button-row">
+                    <button id="add">+</button>
+                    <button id="subtract">-</button>
+                    <button id="multiply">×</button>
+                    <button id="divide">÷</button>
+                </div>
+                <div id="button-columns">
+                    <div id="column-1">
+                        <div class="digit-row button-row">
+                            <button class="number">1</button>
+                            <button class="number">2</button>
+                            <button class="number">3</button>
+                        </div>
+                        <div class="digit-row button-row">
+                            <button class="number">4</button>
+                            <button class="number">5</button>
+                            <button class="number">6</button>
+                        </div>
+                        <div class="digit-row button-row">
+                            <button class="number">7</button>
+                            <button class="number">8</button>
+                            <button class="number">9</button>
+                        </div>
+                        <div class="digit-row button-row">
+                            <button class="number">0</button>
+                        </div>
+                    </div>
+                    <div id="column-2">
+                        <button class="number">.</button>
+                        <button id="equals-button">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    function add(a, b) {
+        return a + b;
+    }
+
+    function subtract(a, b) {
+        return a - b;
+    }
+
+    function multiply(a, b) {
+        return a * b;
+    }
+
+    function divide(a, b) {
+        return a / b;
+    }
+
+    function operate(operator, a, b) {
+        switch(operator) {
+            case "add":
+                return add(a,b);
+                break;
+            case "subtract":
+                return subtract(a,b);
+                break;
+            case "multiply":
+                return multiply(a,b);
+                break;
+            case "divide":
+                return divide(a,b);
+                break;
+        }
+    }
+
+    const inputBox = document.getElementById("input-box");
+    let currentOp = null, accumulator = 0, inputValue = 0, nTerms = 0;
+    
+    function clear() {
+        accumulator = 0;
+        inputValue = 0;
+        currentOp = null;
+        inputBox.value = "";
+        nTerms = 0;
+    }
+
+    function inputDigit(digit) {
+        inputValue = Number(inputValue.toString()+ digit);
+        inputBox.value = inputValue;
+    }
+
+    const digitButtons = Array.from(document.getElementsByClassName("number"));
+    digitButtons.forEach(button => {
+        button.addEventListener("click", e => {
+            inputDigit(e.target.innerHTML);
+            })
+    });
+
+    const operationRow = document.querySelector("#operation-row");
+    const opButtons = Array.from(operationRow.getElementsByTagName("button"));
+    opButtons.forEach(button => {
+        button.addEventListener("click", e => {
+            nTerms += 1;
+            console.log(accumulator, inputValue);
+            accumulator = nTerms < 2 ? inputValue : operate(currentOp, accumulator, inputValue);
+            console.log(accumulator);
+            currentOp = e.target.id;
+            inputValue = 0;
+            inputBox.value = accumulator;
+        })
+    });
+
+    const equalsButton = document.getElementById("equals-button");
+    equalsButton.addEventListener("click", e => {
+        inputValue = Number(inputBox.value);
+        accumulator = operate(currentOp, accumulator, inputValue);
+        inputBox.value = accumulator;
+        accumulator = 0;
+        inputValue = 0;
+    });
+
+    const clearButton = document.getElementById("clear-button");
+    clearButton.addEventListener("click", e=> {clear();});
+
+</script>
