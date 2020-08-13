@@ -12,7 +12,7 @@ body {
     flex-basis: auto;
     width: 500px;
     border-style: solid;
-    border-color: #ff6f74;
+    border-color: #9c38ff;
     border-radius: 5px;
     border-width: 5px;
 }
@@ -64,11 +64,11 @@ body {
 }
 
 .op-button {
-    background-color: #ff6f74;
+    background-color: #ff9f38;
 }
 
 .number {
-    background-color: #ffb56f;
+    background-color: #fff1c8;
 }
 
 .digit-row {
