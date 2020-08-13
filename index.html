@@ -83,7 +83,7 @@
     }
 
     const inputBox = document.getElementById("input-box");
-    let currentOp = null, accumulator = 0, inputValue = 0, nTerms = 0;
+    let currentOp = null, accumulator = 0, inputValue = 0, nTerms = 0, integer = true;
     
     function clear() {
         accumulator = 0;
@@ -91,10 +91,16 @@
         currentOp = null;
         inputBox.value = "";
         nTerms = 0;
+        integer = true;
     }
 
     function inputDigit(digit) {
-        inputValue = Number(inputValue.toString()+ digit);
+        if (digit === "." && integer) {
+            inputValue = inputValue.toString() + digit;
+            integer = false;
+        }
+        else if (digit.match(/[0-9]/))
+            inputValue = Number(inputValue.toString() + digit);
         inputBox.value = inputValue;
     }
 
@@ -115,7 +121,9 @@
             console.log(accumulator);
             currentOp = e.target.id;
             inputValue = 0;
-            inputBox.value = accumulator;
+            //inputBox.value = accumulator.toString().length > 10 ?
+            //    accumulator.toPrecision(10) : accumulator.toString();
+            inputBox.value = Number(accumulator.toPrecision(10)).toString()
         })
     });
 
@@ -123,7 +131,9 @@
     equalsButton.addEventListener("click", e => {
         inputValue = Number(inputBox.value);
         accumulator = operate(currentOp, accumulator, inputValue);
-        inputBox.value = accumulator;
+        //inputBox.value = accumulator.toString().length > 10 ?
+        //    accumulator.toPrecision(10) : accumulator.toString();
+        inputBox.value = Number(accumulator.toPrecision(10)).toString()
         accumulator = 0;
         inputValue = 0;
     });
