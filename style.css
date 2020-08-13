@@ -12,8 +12,9 @@ body {
     flex-basis: auto;
     width: 500px;
     border-style: solid;
-    border-color: blueviolet;
-    border-radius: 3px;
+    border-color: #ff6f74;
+    border-radius: 5px;
+    border-width: 5px;
 }
 
 #screen-row {
@@ -58,14 +59,16 @@ body {
     flex-grow: 1;
 }
 
-#button-container {
-    /*border-style: solid;
-    border-radius: 3px;
-    border-color: lightblue;*/
-}
-
 #operation-row {
     display: flex;
+}
+
+.op-button {
+    background-color: #ff6f74;
+}
+
+.number {
+    background-color: #ffb56f;
 }
 
 .digit-row {
@@ -75,22 +78,22 @@ body {
 button {
     text-align: center;
     flex: 1 1;
-    background-color: peachpuff;
+    background-color: #ff916f;
     border-style: solid;
     border-radius: 5px;
     border-color: brown;
     font-family: monospace;
     font-size: 20pt;
     font-weight: bold;
-    color: brown;
+    color: black;
 }
 
 button:hover {
-    background-color: burlywood;
+    background-color: mediumslateblue;
 }
 
 button:active {
-    background-color: orange;
+    background-color: darkslateblue;
 }
 
 #equals-button {
