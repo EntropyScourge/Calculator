@@ -121,8 +121,6 @@
             console.log(accumulator);
             currentOp = e.target.id;
             inputValue = 0;
-            //inputBox.value = accumulator.toString().length > 10 ?
-            //    accumulator.toPrecision(10) : accumulator.toString();
             inputBox.value = Number(accumulator.toPrecision(10)).toString()
         })
     });
@@ -131,9 +129,8 @@
     equalsButton.addEventListener("click", e => {
         inputValue = Number(inputBox.value);
         accumulator = operate(currentOp, accumulator, inputValue);
-        //inputBox.value = accumulator.toString().length > 10 ?
-        //    accumulator.toPrecision(10) : accumulator.toString();
         inputBox.value = Number(accumulator.toPrecision(10)).toString()
+        if (accumulator === Infinity) inputBox.value = "Div by 0 error";
         accumulator = 0;
         inputValue = 0;
     });
